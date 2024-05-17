@@ -1,8 +1,8 @@
 import { getAuth } from "@clerk/nextjs/server";
 import ImageKit from "imagekit";
-import { NextApiRequest } from "next";
+import { NextRequest } from "next/server";
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: NextRequest) {
   const { userId } = await getAuth(req);
   if (!userId) {
     return Response.json(false);
