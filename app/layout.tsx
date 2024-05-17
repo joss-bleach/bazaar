@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 
 // Providers
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster as ToastProvider } from "sonner";
 
 export default function RootLayout({
   children,
@@ -19,7 +20,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={GeistSans.className}>{children}</body>
+        <body className={GeistSans.className}>
+          <ToastProvider richColors />
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );

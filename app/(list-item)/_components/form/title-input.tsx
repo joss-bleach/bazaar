@@ -76,7 +76,7 @@ export const TitleInput = ({ control, value }: TitleInputProps) => {
             </p>
           </div>
           <FormControl>
-            <Input maxLength={80} placeholder="shadcn" {...field} />
+            <Input maxLength={80} placeholder="Enter your title" {...field} />
           </FormControl>
           <div className="flex flex-row items-center gap-2">
             <div className="relative rounded">
@@ -95,7 +95,6 @@ export const TitleInput = ({ control, value }: TitleInputProps) => {
               {validationMessage} {value.length}/80
             </FormDescription>
           </div>
-          <FormMessage />
         </FormItem>
       )}
     />

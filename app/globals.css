@@ -65,3 +65,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer base {
+  label.file-upload-button input[type="file"] {
+    @apply hidden;
+  }
+}
