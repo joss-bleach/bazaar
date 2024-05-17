@@ -6,20 +6,7 @@ import { z } from "zod";
 import { Loader2, PoundSterling } from "lucide-react";
 import { toast } from "sonner";
 import { UploadResponse } from "imagekit/dist/libs/interfaces";
-
-export const listItemSchema = z.object({
-  title: z.string().min(1).max(80, {
-    message: "Title cannot be longer than 80 characters",
-  }),
-  price: z.string().refine((val) => !Number.isNaN(parseInt(val, 10)), {
-    message: "Expected number, received a string",
-  }),
-  category: z.string().min(1),
-  condition: z.string().min(1),
-  brand: z.string().min(1),
-  description: z.string().min(1).max(250),
-  imageUrls: z.string().array().optional(),
-});
+import { listItemSchema } from "@/lib/validation";
 
 // Components
 import {

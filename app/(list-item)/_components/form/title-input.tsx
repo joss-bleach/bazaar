@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 import { z } from "zod";
 import { Control } from "react-hook-form";
-import { listItemSchema } from "../../list-item/page";
+import { listItemSchema } from "@/lib/validation";
 
 interface TitleInputProps {
   control: Control<z.infer<typeof listItemSchema>>;

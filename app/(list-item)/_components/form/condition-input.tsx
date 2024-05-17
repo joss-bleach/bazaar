@@ -3,7 +3,7 @@ import { useState, useEffect, startTransition } from "react";
 import { Control } from "react-hook-form";
 import { z } from "zod";
 
-import { listItemSchema } from "../../list-item/page";
+import { listItemSchema } from "@/lib/validation";
 
 // Components
 import {
