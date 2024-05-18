@@ -5,6 +5,14 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 // Components
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export const Header = () => {
   return (
@@ -44,6 +52,24 @@ export const Header = () => {
             </li>
           </SignedOut>
           <SignedIn>
+            <li>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost">My profile</Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem>
+                    <Link href="/profile/selling">Selling</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/profile/purchases">Purchases</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/profile/settings">Account settings</Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </li>
             <li className="h-full flex items-center pl-[16px]">
               <UserButton afterSignOutUrl="/" />
             </li>

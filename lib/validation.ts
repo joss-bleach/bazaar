@@ -11,5 +11,5 @@ export const listItemSchema = z.object({
   condition: z.string().min(1),
   brand: z.string().min(1),
   description: z.string().min(1).max(250),
-  imageUrls: z.string().array().optional(),
+  photos: z.string().array().optional(),
 });

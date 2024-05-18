@@ -3,7 +3,11 @@ import { useState, useEffect, startTransition } from "react";
 import { Control } from "react-hook-form";
 import { z } from "zod";
 
+import { CategoryProps } from "@/database/models/category.model";
 import { listItemSchema } from "@/lib/validation";
+
+// Actions
+import { createCategory, getAllCategories } from "@/actions/category.actions";
 
 // Components
 import {
@@ -39,26 +43,25 @@ interface CategoryInputProps {
   control: Control<z.infer<typeof listItemSchema>>;
 }
 
-// Test
-const categoryList = ["Electronics", "Clothing", "Vehicles"];
-
 export const CategoryInput = ({ control }: CategoryInputProps) => {
-  const [categories, setCategories] = useState<string[]>([""]);
+  const [categories, setCategories] = useState<CategoryProps[]>([]);
   const [newCategory, setNewCategory] = useState<string>("");
 
   useEffect(() => {
     const getCategories = async () => {
-      const savedCategories = categoryList;
+      const savedCategories = await getAllCategories();
       if (!savedCategories) {
         return;
       }
-      setCategories(savedCategories);
+      setCategories(savedCategories as CategoryProps[]);
     };
     getCategories();
   }, []);
 
   const handleAddNewCategory = () => {
-    setCategories((previousState) => [...previousState, newCategory]);
+    createCategory({ categoryName: newCategory.trim() }).then((category) => {
+      setCategories((previousState) => [...previousState, category]);
+    });
   };
 
   return (
@@ -83,8 +86,8 @@ export const CategoryInput = ({ control }: CategoryInputProps) => {
               <SelectContent>
                 {categories.length > 0 &&
                   categories.map((category) => (
-                    <SelectItem key={category} value={category}>
-                      {category}
+                    <SelectItem key={category._id} value={category._id}>
+                      {category.name}
                     </SelectItem>
                   ))}
                 <AlertDialog>
