@@ -4,12 +4,16 @@ interface RootLayoutProps {
 
 // Components
 import { Header } from "../../components/shared/header";
+import { Sidebar } from "./_components/sidebar";
 
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
-    <main>
+    <main className="h-full">
       <Header />
-      {children}
+      <div className="flex flex-row h-full">
+        <Sidebar />
+        {children}
+      </div>
     </main>
   );
 };
